@@ -109,4 +109,27 @@ student.listCourses();
 
 // student.courses ==> ['Angular', 'React', 'Vue', 'TypeScript']
 
+interface Human {
+    firstName: string;
+    age: number;
 
+    greet: () => void;
+}
+
+let yigit: Human;
+
+yigit = {
+    firstName: "Yigit",
+    age: 21,
+    greet() {
+        console.log("Merhaba!");
+    },
+};
+
+class Instructor implements Human {
+    firstName: string;
+    age: number;
+    greet() {
+        console.log("Selam!");
+    }
+}
