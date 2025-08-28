@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
-import { NewTaskData } from "./new-task/new-task.models";
+import { Injectable } from '@angular/core';
 
-@Injectable({providedIn: 'root'})
+import { type NewTaskData } from './task/task.model';
+
+@Injectable({ providedIn: 'root' })
 export class TasksService {
   private tasks = [
     {
@@ -42,20 +43,18 @@ export class TasksService {
   }
 
   addTask(taskData: NewTaskData, userId: string) {
-    // this.tasks.push ... add new task to the end.
-    // Our approach is to add the new task to the beginning of the array.
     this.tasks.unshift({
       id: new Date().getTime().toString(),
       userId: userId,
       title: taskData.title,
       summary: taskData.summary,
-      dueDate: taskData.dueDate,
+      dueDate: taskData.date,
     });
     this.saveTasks();
   }
 
-  removeTask(taskId: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== taskId);
+  removeTask(id: string) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
     this.saveTasks();
   }
 
