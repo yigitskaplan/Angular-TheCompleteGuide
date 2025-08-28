@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+
 import { TaskComponent } from "./task/task.component";
 import { NewTaskComponent } from "./new-task/new-task.component";
+import { type NewTaskData } from './new-task/new-task.models';
 
 @Component({
   selector: 'app-tasks',
@@ -53,6 +55,20 @@ export class TasksComponent {
   }
 
   onCancelAddingTask() {
+    this.isAddingTask = false;
+  }
+
+  onCreateTask(taskData: NewTaskData) {
+    // this.tasks.push ... add new task to the end.
+    // Our approach is to add the new task to the beginning of the array.
+    this.tasks.unshift({
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.dueDate
+      
+    })
     this.isAddingTask = false;
   }
 }
