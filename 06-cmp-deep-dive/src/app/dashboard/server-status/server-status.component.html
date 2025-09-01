@@ -3,7 +3,14 @@
     'status-online': currentStatus === 'online',
     'status-offline': currentStatus === 'offline',
     'status-unknown': currentStatus === 'unknown'
+    
 }">
+<!-- inside the div either -->
+<!-- [style]="{
+    fontSize: '32px'
+}"
+or -->
+<!-- [style.fontSize]="'32px'" -->
     @if (currentStatus === 'online') {
     <p>Servers are online</p>
     <p>All systems are operational.</p>
