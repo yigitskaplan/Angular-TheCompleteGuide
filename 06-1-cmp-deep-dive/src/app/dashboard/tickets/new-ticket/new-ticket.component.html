@@ -1,7 +1,7 @@
-<form>
+<form (ngSubmit)="onSubmit(titleInput)">
     <!-- <app-control class control label="Title"></app-control> when not using "host" in .ts file-->
     <app-control label="Title">
-        <input name="title" id="title" />
+        <input name="title" id="title" #titleInput />
     </app-control>
     <!-- <app-control class control label="Request"></app-control> when not using "host" in .ts file-->
     <app-control label="Request">
