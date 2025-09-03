@@ -12,10 +12,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTicketComponent implements OnInit, AfterViewInit{
   @ViewChild('form') private form?: ElementRef<HTMLFormElement>;
+  
   // private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
 
   // for multiple elements (array of elements) there is ViewChildren
-
+  
   ngOnInit() {
       console.log('ONINIT');
       console.log(this.form?.nativeElement);
@@ -32,5 +33,5 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
 
     // this.form?.nativeElement.reset();
     this.form?.nativeElement.reset();
-  }
+  } 
 }
