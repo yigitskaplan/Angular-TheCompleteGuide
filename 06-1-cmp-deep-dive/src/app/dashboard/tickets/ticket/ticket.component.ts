@@ -10,12 +10,15 @@ import { Ticket } from './ticket.model';
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent {
+  //ticket = input.required<Ticket>({alias: 'data'}); - in component this atribute is called as "ticket" but outside "data" can be used
+  //data = input.required<Ticket>({transform: (value) => value}); - for cleanup work
   data = input.required<Ticket>();
   close= output();
   detailsVisible = signal(false);
 
   onToggleDetails() {
     this.detailsVisible.set(!this.detailsVisible());
+    // this.detailsVisible.update((wasVisible) => !wasVisible);
   }
 
   onMarkAsCompleted() {
