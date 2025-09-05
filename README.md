@@ -77,7 +77,7 @@ This repo serves as:
 
 📖 Resources
 	•	[Angular Official Docs](https://angular.dev/)
-	•	[Udemy – Angular: The Complete Guide]([https://angular.dev/](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
+	•	[Udemy – Angular: The Complete Guide](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
 	•	[Academind Tutorials](https://academind.com)
 
 ⸻
