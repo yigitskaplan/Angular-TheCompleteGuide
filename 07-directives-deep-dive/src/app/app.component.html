@@ -8,8 +8,14 @@
   <!-- @if (isAdmin()) {
     <p>only auth users can see this</p>
   } -->
+
   <!-- <p *ngIf="isAdmin()">only auth users can see this</p> -->
-   <ng-template appAuth="admin">
+
+   <!-- <ng-template appAuth="admin">
       <p>only auth users can see this</p>
-   </ng-template>
+   </ng-template> -->
+
+   <p *appAuth="'admin'" class="protected-content admin">Only auth users can see this</p>
+   <p *appAuth="'user'" class="protected-content unauthenticated">Regular users can see this</p>
+   <p *appAuth="'guest'" class="protected-content authenticated">Guests can see this</p>
 </main>
