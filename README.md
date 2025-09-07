@@ -54,7 +54,10 @@ Naming follows the pattern: `sectionNumber-topic`
 | 07 | Directives | ✅ Completed |
 | 08 | Pipes | ✅ Completed |
 | 09 | Services & DI | ✅ Completed |
-| 10+ | Advanced Sections | 🚧 In Progress |
+| 10 | Change Detection | 🚧 On Hold |
+| 11 | RxJS | 🚧 On Hold |
+| 12 | Sending HTTP Requests & Handling Responses | 🚧 In Progress |
+| 13+ | Advanced Sections |  |
 
 ⸻
 
