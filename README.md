@@ -53,7 +53,8 @@ Naming follows the pattern: `sectionNumber-topic`
 | 06 | Component Deep Dive | ✅ Completed |
 | 07 | Directives | ✅ Completed |
 | 08 | Pipes | ✅ Completed |
-| 09+ | Advanced Sections | 🚧 In Progress |
+| 09 | Services & DI | ✅ Completed |
+| 10+ | Advanced Sections | 🚧 In Progress |
 
 ⸻
 
