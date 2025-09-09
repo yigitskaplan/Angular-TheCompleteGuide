@@ -16,6 +16,7 @@ import { PlacesContainerComponent } from '../places-container/places-container.c
 export class AvailablePlacesComponent implements OnInit {
   places = signal<Place[] | undefined>(undefined);
   isFetching = signal(false);
+  error = signal('');
   private httpClient = inject(HttpClient);
   // constructor(private httpClient: HttpClient) {},
   private destroyRef = inject(DestroyRef);
@@ -28,6 +29,10 @@ export class AvailablePlacesComponent implements OnInit {
       .subscribe({
         next: (places) => {
           this.places.set(places);
+        },
+        error: (error) => {
+          console.error(error);
+          this.error.set('Failed to fetch places. Please try again later.');
         },
         complete: () => {
           this.isFetching.set(false);
