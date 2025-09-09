@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 
 import { Place } from '../place.model';
 import { PlacesComponent } from '../places.component';
@@ -25,14 +25,21 @@ export class AvailablePlacesComponent implements OnInit {
     this.isFetching.set(true);
     const subscription = this.httpClient
       .get<{ places: Place[] }>('http://localhost:3000/places')
-      .pipe(map((resData) => resData.places))
+      .pipe(
+        map((resData) => resData.places),
+        catchError((error) => {
+          console.log(error);
+          return throwError(
+            () => new Error('Failed to fetch places. Please try again later.')
+          );
+        })
+      )
       .subscribe({
         next: (places) => {
           this.places.set(places);
         },
-        error: (error) => {
-          console.error(error);
-          this.error.set('Failed to fetch places. Please try again later.');
+        error: (error: Error) => {
+          this.error.set(error.message);
         },
         complete: () => {
           this.isFetching.set(false);
