@@ -5,7 +5,6 @@ import { Place } from '../place.model';
 import { PlacesComponent } from '../places.component';
 import { PlacesContainerComponent } from '../places-container/places-container.component';
 
-
 @Component({
   selector: 'app-available-places',
   standalone: true,
@@ -13,18 +12,23 @@ import { PlacesContainerComponent } from '../places-container/places-container.c
   styleUrl: './available-places.component.css',
   imports: [PlacesComponent, PlacesContainerComponent],
 })
-export class AvailablePlacesComponent implements OnInit{
+export class AvailablePlacesComponent implements OnInit {
   places = signal<Place[] | undefined>(undefined);
   private httpClient = inject(HttpClient);
   // constructor(private httpClient: HttpClient) {},
   private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    const subscription = this.httpClient.get<{ places: Place[] }>('http://localhost:3000/places').subscribe({
-      next: (resData) => {
-        console.log(resData.places);
-      }
-    });
+    const subscription = this.httpClient
+      .get<{ places: Place[] }>('http://localhost:3000/places', {
+        observe: 'response',
+      })
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          console.log(response.body?.places);
+        },
+      });
 
     this.destroyRef.onDestroy(() => {
       subscription.unsubscribe();
