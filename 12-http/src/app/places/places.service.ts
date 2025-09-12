@@ -5,6 +5,7 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 import { HttpClient } from '@angular/common/http';
 
 import { Place } from './place.model';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,13 +27,19 @@ export class PlacesService {
     return this.fetchPlaces(
       'http://localhost:3000/user-places',
       'Failed to fetch user places. Please try again later.'
+    ).pipe(
+      tap({
+        next: (userPlaces) => {
+          this.userPlaces.set(userPlaces);
+        },
+      })
     );
   }
 
-  addPlaceToUserPlaces(placeId: Place) {
+  addPlaceToUserPlaces(placeId: string) {
     return this.httpClient.put(`http://localhost:3000/user-places`, {
       placeId,
-    })
+    });
   }
 
   removeUserPlace(place: Place) {}
