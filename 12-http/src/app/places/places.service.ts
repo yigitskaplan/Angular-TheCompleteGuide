@@ -37,11 +37,23 @@ export class PlacesService {
   }
 
   addPlaceToUserPlaces(place: Place) {
-    this.userPlaces.update((prevPlaces) => [...prevPlaces, place]);
+    const prevPlaces = this.userPlaces();
+    this.userPlaces.set([...prevPlaces, place]);
 
-    return this.httpClient.put(`http://localhost:3000/user-places`, {
-      placeId: place.id,
-    });
+    if (!prevPlaces.some((p) => p.id === place.id)) {
+      this.userPlaces.set([...prevPlaces, place]);
+    }//check if place already exists
+
+    return this.httpClient
+      .put(`http://localhost:3000/user-places`, {
+        placeId: place.id,
+      })
+      .pipe(
+        catchError((error) => {
+          this.userPlaces.set(prevPlaces);
+          return throwError(() => new Error('Failed to add place.'));
+        })
+      );
   }
 
   removeUserPlace(place: Place) {}
