@@ -56,8 +56,9 @@ Naming follows the pattern: `sectionNumber-topic`
 | 09 | Services & DI | ✅ Completed |
 | 10 | Change Detection | 🚧 On Hold |
 | 11 | RxJS | 🚧 On Hold |
-| 12 | Sending HTTP Requests & Handling Responses | 🚧 In Progress |
-| 13+ | Advanced Sections |  |
+| 12 | Sending HTTP Requests & Handling Responses | ✅ Completed |
+| 13 | Handling User Input & Working with Forms(Template-driven & Reactive) | 🚧 In Progress |
+| 14+ | Advanced Sections | 🚧 In Progress |
 
 ⸻
 
