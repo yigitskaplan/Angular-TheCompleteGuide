@@ -12,8 +12,11 @@ function loggingInterceptor(
   request: HttpRequest<unknown>,
   next: HttpHandlerFn
 ) {
+    const req = request.clone({
+        headers: request.headers.set('Auth', 'xyz'),
+    });
   console.log('Request made:', request);
-  return next(request);
+  return next(req);
 }
 
 bootstrapApplication(AppComponent, {
